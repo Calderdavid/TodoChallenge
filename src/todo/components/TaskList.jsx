@@ -1,10 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { CheckBox } from './CheckBox'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
 export const TaskList = (props) => {
 
-  const { list, setList } = props;
+  const { 
+    list, 
+    setList, 
+    tabIndex, 
+    activeList, 
+    setActiveList,
+    completedList,
+    setCompletedList, 
+  } = props;
+  
 
   const onChangeStatus = (e) => {
 
@@ -16,6 +25,7 @@ export const TaskList = (props) => {
     }));
 
     setList(updateList);
+    // setActiveList(updateList);
   }
   
   const onClickRemoveItem = e => {
@@ -23,31 +33,82 @@ export const TaskList = (props) => {
     setList(updateList);
   };
 
+  console.log(activeList)
 
+  const completed = completedList.map((item) => (
+    <>
+      <CheckBox key={item.id} data={item} onChange={onChangeStatus} mt={2}/>
+      <br/>
+    </>
+  )) 
 
+  const active = activeList.map((item) => (
+    <>
+      <CheckBox key={item.id} data={item} onChange={onChangeStatus} mt={2}/>
+      <br/>
+    </>
+  )) 
 
+  
   const chk = list.map((item) => (
     <>
       <CheckBox key={item.id} data={item} onChange={onChangeStatus} mt={2}/>
       <br/>
     </>
+  )) 
+  
+  if ( tabIndex === 0 ) {
+    return (
+      <>
+          <>
+            {list.length ? chk : "No tasks yet."}
+            {
+              list.length ? (
+                <p>
+                  <Button onClick={onClickRemoveItem}>
+                    Delete all done
+                  </Button>
+                </p>
+              ) : null
+            }
+          </>
+      </>
+    )
+  }
 
-  ))
+  if ( tabIndex === 1 ) {
+    return (
+      
+      <>
+        {activeList.length ? active : "No tasks yet."}
+        {/* {
+          activeList.length ? (
+            <p>
+              <Button onClick={onClickRemoveItem}>
+                Delete all done
+              </Button>
+            </p>
+          ) : null
+        } */}
+      </>
+    )    
+  }
 
-
-  return (
-    <>
-        <>
-          {list.length ? chk : "No tasks yet."}
-          {
-            list.length ? (
-              <p>
-                <Button onClick={onClickRemoveItem}>
-                  Delete all done
-                </Button>
-              </p>
-            ) : null}
-        </>
-    </>
-  )
+  if ( tabIndex === 2 ) {
+    return (
+      
+      <>
+        {completedList.length ? completed : "No tasks yet."}
+        {/* {
+          completedList.length ? (
+            <p>
+              <Button onClick={onClickRemoveItem}>
+                Delete all done
+              </Button>
+            </p>
+          ) : null
+        } */}
+      </>
+    )    
+  }
 }
