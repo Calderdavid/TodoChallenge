@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input, Button, Grid, GridItem } from '@chakra-ui/react'
 
-export const FormTodo = (props) => {
+export const FormTodo = ( props ) => {
 
     const [description, setDescription] = useState("");
 
@@ -24,31 +24,31 @@ export const FormTodo = (props) => {
 
     return (
         <>
-                    <form alignItems="center" mt={2} onSubmit={handleSubmit}>
-                        <Grid
-                            gap={2}
-                            justifyContent="center"
-                            display="flex"
-                        > 
-                            <GridItem>
-                                <Input 
-                                    placeholder="Enter a new task"
-                                    value={description}
-                                    onChange={handleInputChange}
-                                />
-                            </GridItem>
+            <form alignItems="center" mt={2} onSubmit={handleSubmit}>
+                <Grid
+                    gap={2}
+                    justifyContent="center"
+                    display="flex"
+                > 
+                    <GridItem>
+                        <Input 
+                            placeholder="Enter a new task"
+                            value={description}
+                            onChange={handleInputChange}
+                        />
+                    </GridItem>
 
-                            <GridItem>
-                                <Button
-                                    colorScheme='teal'
-                                    type="submit"
-                                    ml={2}
-                                >
-                                    Add
-                                </Button>
-                            </GridItem>
-                        </Grid>
-                    </form>
+                    <GridItem>
+                        <Button
+                            colorScheme='teal'
+                            type="submit"
+                            ml={2}
+                        >
+                            Add
+                        </Button>
+                    </GridItem>
+                </Grid>
+            </form>
         </>
     )
 }

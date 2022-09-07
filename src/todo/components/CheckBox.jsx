@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
+import { Checkbox } from '@chakra-ui/react'
 
 export const CheckBox = (props) => {
 
@@ -16,8 +16,6 @@ export const CheckBox = (props) => {
           onChange={onChange}
           mb={3}
         >{description}</Checkbox>
-      
-      
       </>
     )
 }

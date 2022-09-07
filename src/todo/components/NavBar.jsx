@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { TaskList } from './TaskList'
 import { FormTodo } from './FormTodo'
-import { CheckBox } from './CheckBox'
 
-export const NavBar = (props) => {
+export const NavBar = ( props ) => {
 
     const {
         list,
@@ -16,33 +15,34 @@ export const NavBar = (props) => {
         setCompletedList,
     } = props
     
-    const [tabIndex, setTabIndex] = useState(0)
+    const [ tabIndex, setTabIndex ] = useState(0)
     
-    const handleTabsChange = (index) => {
-        setTabIndex(index);
+    const handleTabsChange = ( index ) => {
+        setTabIndex( index );
     }
 
     const onClickRemoveItem = e => {
-        console.log('pasoo')
-        const updateList = list.filter(item => item.done === false);
-        setActiveList(updateList);
+        const updateList = list.filter( item => item.done === false );
+
+        setActiveList( updateList );
     };
 
     const onClickRemoveActive = e => {
-        const updateList = list.filter(item => item.done === true);
-        setCompletedList(updateList);
+        const updateList = list.filter( item => item.done === true );
+
+        setCompletedList( updateList );
     }
     
     return (
         <>
-            <Tabs index={tabIndex} onChange={handleTabsChange}>
+            <Tabs index={ tabIndex } onChange={handleTabsChange}>
                 <TabList mb={2}>
                     <Tab>All</Tab>
-                    <Tab onClick={onClickRemoveItem}>Active</Tab>
-                    <Tab onClick={onClickRemoveActive}>Completed</Tab>
+                    <Tab onClick={ onClickRemoveItem }>Active</Tab>
+                    <Tab onClick={ onClickRemoveActive }>Completed</Tab>
                 </TabList>
                 
-                <FormTodo handleAddItem={handleAddItem}/>
+                <FormTodo handleAddItem={ handleAddItem }/>
 
                 <TabPanels>
                     <TabPanel>
@@ -77,9 +77,6 @@ export const NavBar = (props) => {
                     </TabPanel>
                 </TabPanels>
             </Tabs>
-
-            
-
         </>
     )
 }
