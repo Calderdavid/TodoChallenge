@@ -24,9 +24,16 @@ export const TaskList = (props) => {
   };
 
 
+
+
   const chk = list.map((item) => (
-    <CheckBox key={item.id} data={item} onChange={onChangeStatus}/>
+    <>
+      <CheckBox key={item.id} data={item} onChange={onChangeStatus} mt={2}/>
+      <br/>
+    </>
+
   ))
+
 
   return (
     <>

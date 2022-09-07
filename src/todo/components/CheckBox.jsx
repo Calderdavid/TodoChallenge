@@ -14,6 +14,7 @@ export const CheckBox = (props) => {
           name={id}
           defaultChecked={done}
           onChange={onChange}
+          mb={3}
         >{description}</Checkbox>
       
       

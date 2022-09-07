@@ -10,6 +10,7 @@ import '@fontsource/open-sans/700.css'
 import { useState } from 'react'
 import { FormTodo } from './components/FormTodo'
 import { TaskList } from './components/TaskList'
+import { NavBar } from './components/NavBar'
 
 
 
@@ -34,9 +35,11 @@ export const TodoPage = () => {
                     <Text fontSize={80} fontFamily='sans-serif'>#todo</Text>
                 </GridItem>
 
-                <FormTodo handleAddItem={handleAddItem}/>
+                <NavBar list={list} setList={setList} handleAddItem={handleAddItem}/>
+
+                {/* <FormTodo handleAddItem={handleAddItem}/> */}
                 
-                <TaskList list={list} setList={setList}/>
+                {/* <TaskList list={list} setList={setList}/> */}
                 
             </Grid>
         
